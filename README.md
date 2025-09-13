@@ -3,6 +3,9 @@
 A simple and interactive Calculator web application that performs basic arithmetic operations.  
 Perfect for beginners to learn DOM manipulation and event handling in JavaScript.
 
+### 🚀 Live Demo
+https://devanand-official.github.io/Calculator/
+
 ### 🔧 Features:
 - Perform addition, subtraction, multiplication, and division
 - Clear and reset functionality
@@ -13,6 +16,3 @@ Perfect for beginners to learn DOM manipulation and event handling in JavaScript
 - HTML
 - CSS
 - JavaScript
-  
-### 🚀 Live Demo
-https://devanand-official.github.io/Calculator/
