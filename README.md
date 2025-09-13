@@ -1,4 +1,4 @@
-# 🧮 Calculator App
+# 🧮 Calculator
 
 A simple and interactive Calculator web application that performs basic arithmetic operations.  
 Perfect for beginners to learn DOM manipulation and event handling in JavaScript.
