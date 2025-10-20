@@ -29,26 +29,28 @@
     </div>
     <script src="script.js"></script>
     <script>
-      (function() {
+(function() {
   const root404 = '/404.html';
   const path = window.location.pathname;
 
   // Only check non-root pages
   if (path !== '/' && path !== '/index.html') {
-    fetch(path, { method: 'HEAD' })
-      .then(response => {
-        if (!response.ok) {
-          console.warn(`Page not found: ${path}. Redirecting to 404 page.`);
-          window.location.href = root404;
-        }
-      })
-      .catch(err => {
-        console.error('Error checking page existence:', err);
-        window.location.href = root404;
-      });
+    // Use a try/catch fallback for GitHub Pages
+    try {
+      fetch(path, { method: 'HEAD' })
+        .then(response => {
+          if (!response.ok || response.status === 404) {
+            window.location.href = root404;
+          }
+        })
+        .catch(err => { window.location.href = root404; });
+    } catch(e) {
+      window.location.href = root404;
+    }
   }
 })();
-    </script>
+</script>
   </body>
 </html>
+
 
