@@ -29,26 +29,26 @@
     </div>
     <script src="script.js"></script>
     <script>
-      (function () {
-        // Define the root 404 page URL
-        const root404 = "/404.html"; // adjust if your 404 page has a different name/path
+      (function() {
+  const root404 = '/404.html';
+  const path = window.location.pathname;
 
-        // Get the current pathname
-        const path = window.location.pathname;
-
-        // Check if current page exists
-        fetch(path, { method: "HEAD" })
-          .then((response) => {
-            if (!response.ok) {
-              // If file/page does not exist, redirect to root 404 page
-              window.location.href = root404;
-            }
-          })
-          .catch((err) => {
-            // In case of any error, redirect to 404
-            window.location.href = root404;
-          });
-      })();
+  // Only check non-root pages
+  if (path !== '/' && path !== '/index.html') {
+    fetch(path, { method: 'HEAD' })
+      .then(response => {
+        if (!response.ok) {
+          console.warn(`Page not found: ${path}. Redirecting to 404 page.`);
+          window.location.href = root404;
+        }
+      })
+      .catch(err => {
+        console.error('Error checking page existence:', err);
+        window.location.href = root404;
+      });
+  }
+})();
     </script>
   </body>
 </html>
+
