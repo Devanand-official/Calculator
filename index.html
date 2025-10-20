@@ -27,7 +27,29 @@
         <button onclick="appendToDisplay('/')">/</button>
       </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js">
+          (function() {
+        // URL of your root 404 page
+        const root404 = '/404.html'; // change if your 404 page has a different name/path
+
+        // Get current path
+        const path = window.location.pathname;
+
+        // Only run for subpages, not the root
+        if (path !== '/' && path !== '/index.html') {
+          fetch(path, { method: 'HEAD' })
+            .then(response => {
+              if (!response.ok) {
+                console.warn(`Page not found: ${path}. Redirecting to 404 page.`);
+                window.location.href = root404;
+              }
+            })
+            .catch(err => {
+              console.error('Error checking page existence:', err);
+              window.location.href = root404;
+            });
+        }
+      })();
+    </script>
   </body>
 </html>
-
