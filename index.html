@@ -27,26 +27,31 @@
         <button onclick="appendToDisplay('/')">/</button>
       </div>
     </div>
-    <script src="script.js">
-               (function() {
-        // Define the root 404 page URL
-        const root404 = '/404.html'; // adjust if your 404 page has a different name/path
+    <script src="script.js"></script>
+    <script>
+      (function () {
+        // URL of your root 404 page
+        const root404 = "/404.html"; // change if your 404 page has a different name/path
 
-        // Get the current pathname
+        // Get current path
         const path = window.location.pathname;
 
-        // Check if current page exists
-        fetch(path, { method: 'HEAD' })
-          .then(response => {
-            if (!response.ok) {
-              // If file/page does not exist, redirect to root 404 page
+        // Only run for subpages, not the root
+        if (path !== "/" && path !== "/index.html") {
+          fetch(path, { method: "HEAD" })
+            .then((response) => {
+              if (!response.ok) {
+                console.warn(
+                  `Page not found: ${path}. Redirecting to 404 page.`
+                );
+                window.location.href = root404;
+              }
+            })
+            .catch((err) => {
+              console.error("Error checking page existence:", err);
               window.location.href = root404;
-            }
-          })
-          .catch(err => {
-            // In case of any error, redirect to 404
-            window.location.href = root404;
-          });
+            });
+        }
       })();
     </script>
   </body>
