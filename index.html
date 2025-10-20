@@ -28,29 +28,8 @@
       </div>
     </div>
     <script src="script.js"></script>
-    <script>
-(function() {
-  const root404 = '/404.html';
-  const path = window.location.pathname;
-
-  // Only check non-root pages
-  if (path !== '/' && path !== '/index.html') {
-    // Use a try/catch fallback for GitHub Pages
-    try {
-      fetch(path, { method: 'HEAD' })
-        .then(response => {
-          if (!response.ok || response.status === 404) {
-            window.location.href = root404;
-          }
-        })
-        .catch(err => { window.location.href = root404; });
-    } catch(e) {
-      window.location.href = root404;
-    }
-  }
-})();
-</script>
   </body>
 </html>
+
 
 
