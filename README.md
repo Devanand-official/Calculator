@@ -4,7 +4,7 @@ A simple and interactive Calculator web application that performs basic arithmet
 Perfect for beginners to learn DOM manipulation and event handling in JavaScript.
 
 ### 🚀 Live Demo
-https://devanand.is-a.dev/calculator/
+🌐 https://devanand.is-a.dev/calculator/
 
 ### 🔧 Features:
 - Perform addition, subtraction, multiplication, and division
